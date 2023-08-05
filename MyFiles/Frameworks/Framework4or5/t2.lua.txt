@@ -1,0 +1,26 @@
+function require_ex(filename)
+    local old_content
+    if package.loaded[filename] then
+        -- 把旧的模块保存起来
+        old = package.loaded[filename]
+        -- 然后package.loaded[filename]赋空
+        package.loaded[filename] = nil
+    end
+         
+     -- xpcall下执行require
+    local ok,err = pcall(require, filename)
+    if not ok then
+        --热更失败，将旧值赋回去
+        print("hotfix fail, err msg ",err)
+        package.loaded[filename] = old_content
+        return false
+    end
+
+    return true
+end
+
+function require_ex_some()
+    require_ex('tt');
+end
+
+require('tt');

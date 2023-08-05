@@ -1,0 +1,17 @@
+function ad1(a)
+    return a*a+a;
+end
+function ad2(b)
+    return b*3+1;
+end
+
+function ad3(c)
+    return ad1(c)+2;
+end
+
+
+tt ={
+    speed
+}
+
+speed =3*2+ad1(5)+ad2(23);

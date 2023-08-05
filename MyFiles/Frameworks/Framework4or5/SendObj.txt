@@ -1,0 +1,1 @@
+{"data1":{"keaiPanel":"","aasaToggle":"Toggle","ssButton":"Button","ggButton":"Button","bkImage":"Image"},"csFilePath":"C:\\Users\\skyAllen\\Downloads\\GameFrame4-EnglishApp\\Assets\\App\\Editor\\keaiPanel.cs"}

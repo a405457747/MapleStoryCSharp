@@ -1,0 +1,6 @@
+{
+	"targetDir":"",
+		"saveDir":"./CodeRepository",
+		"curScriptSelect":".cs",
+			"filterDir":["node_modules",".vscode",".idea","__pycache__","LetScriptClean"]
+}
