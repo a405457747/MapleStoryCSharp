@@ -267,10 +267,10 @@ public class LeetcodeTest : MonoBehaviour
         //用好linq，反正再差也比python强
 
         //tab
-        while (false)
+/*        while (false)
         {
             print("true");
-        }
+        }*/
 
         void jj(int age, string name)
         {
