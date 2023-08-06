@@ -1,0 +1,10 @@
+{
+    "name": "com.zhendianhuyu.maplestory",
+    "displayName": "MapleStory GameFramework",
+    "version": "1.0.0",
+    "unity": "2019.4",
+    "keywords": ["GameFramework"],
+    "description": "MapleStory GameFramework description",
+    "dependencies": {
+    }
+}
