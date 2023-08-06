@@ -2,16 +2,6 @@
 using System.Collections.Generic;
 //using UniRx;
 
-[Serializable]
-public  class SaveMap
-{
-    public UserSet userSet = new UserSet();
-   public  object k2 = new { name = "bill", age = 32 };
-    public SaveMap()
-    {
-       
-    }
-}
 
 [Serializable]
 public class UserSet

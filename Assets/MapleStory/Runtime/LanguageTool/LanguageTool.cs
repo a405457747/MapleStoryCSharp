@@ -35,21 +35,21 @@ namespace MapleStory
             }
         }
 
-        public string GetMessage(int messageId)
+        public string GetMessage(int messageId, List<string> datas = null)
         {
             //这里效率很低，但是谁叫我用C#呢
-            var data = LanguageTable.Datas.Find(item => item.ID == $"{messageId}");
+            //var data = LanguageTable.Datas.Find(item => item.ID == $"{messageId}");
             if (LanguageSelectId == 0)
             {
-                return data.ChineseSimplified;
+                return datas[0];// data.ChineseSimplified;
             }
             else if (LanguageSelectId == 1)
             {
-                return data.ChineseTraditional;
+                return datas[1];// data.ChineseTraditional;
             }
             else if (LanguageSelectId == 2)
             {
-                return data.English;
+                return datas[2];// data.English;
             }
 
             return "";
