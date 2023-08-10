@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-namespace MapleStory {
-public interface IJSON<T>{
-
-        string ToJson(object obj, bool prettyPrint=false);
+namespace MapleStory
+{
+    public interface IJSON<T>
+    {
+        string ToJson(object obj, bool prettyPrint = false);
 
         T FromJson(string json);
     }
@@ -17,7 +16,7 @@ public interface IJSON<T>{
     {
         public T FromJson(string json)
         {
-            throw new System.NotImplementedException();
+            return default;
         }
 
         public string ToJson(object obj, bool prettyPrint = false)
@@ -36,7 +35,7 @@ public interface IJSON<T>{
 
         public string ToJson(object obj, bool prettyPrint)
         {
-            string json = JsonUtility.ToJson(obj,prettyPrint);
+            string json = JsonUtility.ToJson(obj, prettyPrint);
             return json;
         }
     }

@@ -7,22 +7,22 @@ namespace MapleStory
 {
     public interface IAssetFactory
     {
-
         AudioClip LoadAudioClip(string name);
-      Sprite LoadSprite(string name);
-       Material LoadMaterial(string name);
-         Font LoadFont(string name);
-      TextAsset LoadTextAsset(string name);
-       SpriteAtlas LoadSpriteAtlas(string name);
+        Sprite LoadSprite(string name);
+        Material LoadMaterial(string name);
+        Font LoadFont(string name);
+        TextAsset LoadTextAsset(string name);
+        SpriteAtlas LoadSpriteAtlas(string name);
         GameObject LoadGameObject(string name);
         T LoadScriptableObject<T>() where T : ScriptableObject;
 
-        /*
-        public abstract GameObject LoadEffect(string name);
-        public abstract GameObject LoadPanel(string name);
-        public abstract GameObject LoadPool(string name);
-        public abstract Sprite LoadAtlasSprite(string name,string name2);
-    */
+
+
+        public GameObject LoadEffect(string name);
+        public GameObject LoadPanel(string name);
+        public GameObject LoadPool(string name);
+        public Sprite LoadAtlasSprite(string name, string name2);
+
     }
 
     public class ResManager : MonoBehaviour, IAssetFactory
@@ -33,11 +33,10 @@ namespace MapleStory
 
         }
 
-        public T LoadJson<T>(string txtName) where T:class
+        public T LoadJson<T>(string txtName) where T : class
         {
             T res = default;
-            
-            
+
             return res;
         }
 
@@ -79,6 +78,26 @@ namespace MapleStory
         public T LoadScriptableObject<T>() where T : ScriptableObject
         {
             return Resources.Load<T>(name);
+        }
+
+        public GameObject LoadEffect(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public GameObject LoadPanel(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public GameObject LoadPool(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Sprite LoadAtlasSprite(string name, string name2)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

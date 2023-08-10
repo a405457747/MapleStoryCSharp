@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 namespace MapleStory
 {
     /// <summary>
@@ -12,7 +11,6 @@ namespace MapleStory
     /// </summary>
     public interface IEventInfo
     {
-
     }
 
     public class EventInfo<T> : IEventInfo
@@ -35,8 +33,6 @@ namespace MapleStory
             this.unityAction += unityAction;
         }
     }
-
-
 
     public class EventTool : UnityEngine.MonoBehaviour
     {

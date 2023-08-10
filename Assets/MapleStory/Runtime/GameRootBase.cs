@@ -34,7 +34,7 @@ namespace MapleStory
 
         private Transform canvasTrans;
 
-        private ResManager _resManager;
+        public ResManager _resManager { get; private set; }
 
         private SaveManager _saveManager; 
         
