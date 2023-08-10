@@ -15,13 +15,11 @@ public class AppRoot : GameRootBase
         base.Awake();
 
         Instance = this;
-
     }
 
     void Start()
     {
-        LogNote.Print("nihao");
-      
+        LogNote.Print("AppRoot Start");
     }
     
 }

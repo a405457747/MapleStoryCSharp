@@ -22,33 +22,10 @@ namespace MapleStory
             return t;
         }
 
-/*        public static T FindRecursion<T>(Transform parentTrans, string targetName) where T : Component
-        {
-            Transform GetTargetTrans(Transform parent, string target)
-            {
-                Transform tempTrans = null;
-                tempTrans = parent.Find(target);
-                if (tempTrans == null)
-                    foreach (Transform child in parent)
-                    {
-                        tempTrans = GetTargetTrans(child, target);
-                        if (tempTrans != null) break;
-                    }
-
-                return tempTrans;
-            }
-
-            T res = null;
-            res = GetTargetTrans(parentTrans, targetName)?.GetComponent<T>();
-            if (res == null) Debug.LogException(new NullReferenceException());
-            return res;
-        }*/
-
         public static RectTransform GetRect(Transform trans)
         {
             return trans as RectTransform;
         }
-
 
         public static RectTransform SetWidth(RectTransform rect, float x)
         {

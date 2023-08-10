@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -12,16 +12,16 @@ namespace MapleStory
     public class TransparentUI : UIMotionBase, IActive
     {
 
-        *//*
+
         public void Show(Action act = null)
         {
             gameObject.SetActive(true);
-    
+
             var canvasGroup = gameObject.AddOrGetComponent<CanvasGroup>(); //.AddOrGetComponent<CanvasGroup>();
             canvasGroup.alpha = 0f;
             canvasGroup.DOFade(1f, AnimationCost).OnComplete(() => { });
         }
-    
+
         public void Hide(Action act = null)
         {
             transform.DOScale(0, AnimationCost).OnComplete(() =>
@@ -31,7 +31,7 @@ namespace MapleStory
                 canvasGroup.alpha = 1f;
             });
         }
-        *//*
+
 
         public virtual void Show(Action act)
         {
@@ -50,4 +50,4 @@ namespace MapleStory
             });
         }
     }
-}*/
+}

@@ -8,8 +8,7 @@ using System.Linq;
 using UnityEditor;
 using static MapleStory.LogNote;
 
-public static 
-    class AudioNameCreate
+public static  class AudioNameCreate
 {
 
     [MenuItem("MapleStory/Audio/CreateAudioName")]
@@ -21,13 +20,11 @@ public static
         var pyPath=Path.Combine(Application.dataPath.Replace("/Assets",""),"MyFiles/PythonHelper/AudioName.py");
 
         if (File.Exists(pyPath))
-        {
-            //Debug.Log(File.Exists(pyPath));
-            //Debug.Log(pyPath);
+        { 
             ToolRoot.RunPythonScript( pyPath,audioDirPath);
         }
         
-        UnityEngine. Debug.Log("CreateAudioName Successful");
+        UnityEngine.Debug.Log("CreateAudioName Successful");
     }
 
 }

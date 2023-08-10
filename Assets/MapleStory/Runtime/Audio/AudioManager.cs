@@ -11,14 +11,13 @@ namespace MapleStory
     {
         private AudioSource _musicAudioSource;
         private Dictionary<string, AudioSource> _soundAudioSources;
-
-
         private ResManager _resManager;
 
         public virtual void Awake()
         {
             _resManager = FindObjectOfType<ResManager>();
             _soundAudioSources = new Dictionary<string, AudioSource>();
+
             _musicAudioSource = GetComponent<AudioSource>();
             if (_musicAudioSource == null) _musicAudioSource = gameObject.AddComponent<AudioSource>();
         }
@@ -34,10 +33,10 @@ namespace MapleStory
         }
 
 
-        private void AudioSourceCommon(AudioSource audioSource, string audioName, bool isLoop = false,
-            float volume = 0.65f, bool isPlayOneShot = false)
+        private void AudioSourceCommon(AudioSource audioSource, string audioName, bool isLoop ,
+            float volume , bool isPlayOneShot)
         {
-            AudioClip tempClip = _resManager.LoadAudioClip(audioName); // Kit.Load<AudioClip>(audioName);
+            AudioClip tempClip = _resManager.LoadAudioClip(audioName); 
             audioSource.clip = tempClip;
             audioSource.loop = isLoop;
             audioSource.volume = volume;
@@ -53,15 +52,15 @@ namespace MapleStory
 
             if (_soundAudioSources.ContainsKey(audioName))
             {
-                //这里缓存了就无法再改变音量了。
                 if (isPlayOneShot) _soundAudioSources[audioName].PlayOneShot(_soundAudioSources[audioName].clip);
                 else _soundAudioSources[audioName].Play();
             }
             else
             {
                 var tempAudioSource =
-                    gameObject.AddComponent<AudioSource>(); // Kit.GetOrAddComponent<AudioSource>(gameObject);
+                    gameObject.AddComponent<AudioSource>();
                 _soundAudioSources.Add(audioName, tempAudioSource);
+
                 AudioSourceCommon(tempAudioSource, audioName, isLoop, volume, isPlayOneShot);
             }
         }

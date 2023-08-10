@@ -2,6 +2,14 @@
 
 namespace MapleStory
 {
+    public enum TimeStampTypes
+    {
+        Second,
+        Minute,
+        Hour,
+        Day
+    }
+
     public static class TimeHelper
     {
         public const int Second = 1;
@@ -20,6 +28,7 @@ namespace MapleStory
 
             double res = 0f;
             var ts = DateTime.Now - algo;
+
             switch (timeStampTypes)
             {
                 case TimeStampTypes.Second:
@@ -52,11 +61,4 @@ namespace MapleStory
         }
     }
 
-    public enum TimeStampTypes
-    {
-        Second,
-        Minute,
-        Hour,
-        Day
-    }
 }

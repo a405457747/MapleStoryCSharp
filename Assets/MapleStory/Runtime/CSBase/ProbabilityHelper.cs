@@ -52,6 +52,7 @@ namespace MapleStory
         public static List<int> GetWeightItemByNormalRange(List<int> normalRange)
         {
             var res = Enumerable.Repeat(0, normalRange.Count).ToList();
+
             for (var i = 0; i < normalRange.Count; i++)
             {
                 var item = normalRange[i];
@@ -114,6 +115,7 @@ namespace MapleStory
             public static int GetWeightByDoubleString(string floatString, int w = 1000000)
             {
                 double f = default;
+
                 try
                 {
                     f = double.Parse(floatString);
@@ -151,6 +153,7 @@ namespace MapleStory
 
                 return -1;
             }
+
         }
     }
 }

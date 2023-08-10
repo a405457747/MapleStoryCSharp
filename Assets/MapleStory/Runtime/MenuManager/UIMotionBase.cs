@@ -6,7 +6,11 @@ using MapleStory;
 using System.Linq;
 using static MapleStory.LogNote;
 
-public abstract class UIMotionBase : MonoBehaviour
+
+namespace MapleStory
 {
-  [SerializeField]   protected float motionCost;
+    public abstract class UIMotionBase : MonoBehaviour
+    {
+        [SerializeField] protected float motionCost;
+    }
 }

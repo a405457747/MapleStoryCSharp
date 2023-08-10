@@ -14,7 +14,5 @@ namespace MapleStory
         {
             Application.OpenURL(Application.persistentDataPath);
         }
-
-
     }
 }

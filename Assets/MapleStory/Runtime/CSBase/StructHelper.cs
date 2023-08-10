@@ -6,9 +6,10 @@ namespace MapleStory
 {
     public static class StructHelper
     {
-        public static int RoundNumbers(int number, int place = 1) //如果是1取整为10
+        public static int RoundNumbers(int number, int place = 1)
         {
             var arr = number.ToString().ToCharArray();
+
             for (var i = arr.Length - 1; i >= 0 && place > 0; i--, place--) arr[i] = '0';
 
             return int.Parse(new string(arr));
@@ -21,7 +22,7 @@ namespace MapleStory
             b = temp;
         }
 
-        public static double GetFractionalPart(double f) //获取小数部分
+        public static double GetFractionalPart(double f)
         {
             return f - Math.Floor(f);
         }
@@ -41,17 +42,5 @@ namespace MapleStory
             return Enum.GetValues(typeof(T)).Cast<T>().ToList();
         }
 
-        /*
-        public static Vector3 GetCursorPos()
-        {
-            Debug.Assert(Camera.main != null, "Camera.main != null");
-            var cursorPos = Camera.main.ScreenToWorldPoint(new Vector3(
-                Input.mousePosition.x,
-                Input.mousePosition.y,
-                -Camera.main.transform.position.z
-            ));
-            return cursorPos;
-        }
-        */
     }
 }

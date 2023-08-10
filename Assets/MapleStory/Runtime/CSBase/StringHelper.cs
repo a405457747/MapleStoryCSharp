@@ -11,6 +11,7 @@ namespace MapleStory
         {
             var str = v.ToString("N");
             var str1 = str.Split('.')[0];
+
             return str1;
         }
 
@@ -21,6 +22,7 @@ namespace MapleStory
             var t = str.ToList();
             t.RemoveAt(t.Count - 1);
             t.RemoveAt(0);
+
             return new string(t.ToArray());
         }
 
@@ -58,25 +60,6 @@ namespace MapleStory
             tempVal *= 100;
             return tempVal.ToString(format) + "%";
         }
-
-        /*
-        public static string GetFormatVersion(int version, string fomat = ".")
-        {
-            var charList = version.ToString().ToList();
-    
-            while (charList.Count != 6) charList.Insert(0, '0');
-    
-            var list = new List<string>();
-            for (var i = 0; i < charList.Count; i += 2)
-            {
-                var tempStr = charList[i] + charList[i + 1].ToString();
-                var tempInt = int.Parse(tempStr);
-                list.Add(tempInt.ToString());
-            }
-    
-            return string.Join(fomat, list);
-        }
-        */
 
         public static string GetShortForNumber(long num, string digits = "f1")
         {
@@ -126,7 +109,6 @@ namespace MapleStory
                 return $"{numFloat.ToString(digits)}bb";
             }
 
-            //cc uu
             return "Max";
         }
     }

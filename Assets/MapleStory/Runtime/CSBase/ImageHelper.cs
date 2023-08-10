@@ -14,16 +14,11 @@ namespace MapleStory
         public static Color GetColor(string c)
         {
             Color res = default;
+
             c = "#" + c;
 
-            if (ColorUtility.TryParseHtmlString(c, out res))
-            {
-            }
-            else
-            {
-                // Log.LogWarning("Do not change success");
-            }
-
+            ColorUtility.TryParseHtmlString(c, out res);
+            
             return res;
         }
     }
