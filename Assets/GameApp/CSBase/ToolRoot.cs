@@ -7,10 +7,6 @@ namespace MapleStory
     public static  partial class ToolRoot 
     {
 
-        public static void Test()
-        {
-            Debug.Log("Test");
-        }
 
     }
 

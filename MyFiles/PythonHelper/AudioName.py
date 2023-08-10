@@ -37,7 +37,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public static partial class AudioName
+public static class AudioName
 {
 
         {% for k,v in files_dict.items() -%}

@@ -8,15 +8,23 @@
           
         
           
-            ChineseSimplified = "我是第{}关{}",
+            ChineseSimplified = "中国222",
           
         
           
-            English = "i am  {} Level{}",
+            English = "chinese222",
           
         
           
-            ChineseTraditional = "我是第{}關卡{}",
+            ChineseTraditional = "cccww222",
+          
+        
+          
+            Nihao = 231,
+          
+        
+          
+            buyao = true,
           
         
       
@@ -35,15 +43,23 @@
                 
               
                 
-                  ChineseSimplified = "我是第{}关{}",
+                  ChineseSimplified = "中国222",
                 
               
                 
-                  English = "i am  {} Level{}",
+                  English = "chinese222",
                 
               
                 
-                  ChineseTraditional = "我是第{}關卡{}",
+                  ChineseTraditional = "cccww222",
+                
+              
+                
+                  Nihao = 231,
+                
+              
+                
+                  buyao = true,
                 
               
             },
@@ -55,15 +71,23 @@
                 
               
                 
-                  ChineseSimplified = "",
+                  ChineseSimplified = "ss",
                 
               
                 
-                  English = "",
+                  English = "dd",
                 
               
                 
-                  ChineseTraditional = "",
+                  ChineseTraditional = "0",
+                
+              
+                
+                  Nihao = 0,
+                
+              
+                
+                  buyao = true,
                 
               
             },

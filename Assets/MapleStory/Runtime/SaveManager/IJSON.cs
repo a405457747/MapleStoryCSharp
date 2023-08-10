@@ -3,12 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 namespace MapleStory {
 public interface IJSON<T>{
 
         string ToJson(object obj, bool prettyPrint=false);
 
         T FromJson(string json);
+    }
+
+
+    public class ListJson<T> : IJSON<T>
+    {
+        public T FromJson(string json)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string ToJson(object obj, bool prettyPrint = false)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 
