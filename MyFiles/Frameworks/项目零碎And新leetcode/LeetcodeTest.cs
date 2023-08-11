@@ -261,6 +261,8 @@ public class LeetcodeTest : MonoBehaviour
 
     private void CSharpeSpeedEdit()
     {
+		//f1 api导航超级好用的
+		
         //alt+enter打开rider的灯泡
 
         //用好linq，反正再差也比python强
