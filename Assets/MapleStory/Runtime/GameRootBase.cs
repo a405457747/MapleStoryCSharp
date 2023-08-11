@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using MapleStory;
+using UniRx;
 using UnityEngine;
 
 namespace MapleStory
@@ -36,17 +37,24 @@ namespace MapleStory
         public AudioManager audioManager { get; private set; }
         public MenuManager menuManager { get; private set; }
         
-        
+        public LogoPanel logoPanel { get; private set; }
         protected virtual void Awake()
         {
             DontDestroyOnLoad(gameObject);
 
             canvasTrans = GameObject.Find("Canvas").transform;
-
+            
             resManager = this.gameObject.AddComponent<ResManager>();
             saveManager = this.gameObject.AddComponent<SaveManager>();
             audioManager = this.gameObject.AddComponent<AudioManager>();
             menuManager = this.gameObject.AddComponent<MenuManager>();
+            
+            logoPanel = OpenPanel<LogoPanel>();
+            logoPanel.mainImageSprite(resManager.LoadSprite("logo"));
+            Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>
+            {
+                ClosePanel<LogoPanel>();
+            });
         }
         
         protected virtual void FixedUpdate()

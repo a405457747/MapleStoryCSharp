@@ -119,7 +119,7 @@ namespace MapleStory
 
         }
 
-        public static List<Transform> FindWantTransform(GameObject selectedObject)//这个方法自动去除root，暂时估计没有bug
+        public static List<Transform> FindWantTransform(GameObject selectedObject)
         {
             Transform root = selectedObject.transform;
 

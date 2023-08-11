@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using MapleStory;
+using UniRx;
 using UnityEngine;
 
 public class TimeSpeedSample : MonoBehaviour
@@ -10,8 +12,13 @@ public class TimeSpeedSample : MonoBehaviour
 
     void Start()
     {
-        TimeSpeed.SpeedScale = 20;
+        TimeSpeed.SpeedScale = 0.25f;
 
+        Debug.Log("延时一秒 start");
+        Observable.Timer(TimeSpan.FromSeconds(1))
+            .Subscribe(_ => { Debug.Log("延时一秒 over"); });
+
+        return;
         StartCoroutine(ss());
 
         var cube = GameObject.Find("Cube");
@@ -30,6 +37,7 @@ public class TimeSpeedSample : MonoBehaviour
 
     private void FixedUpdate()
     {
+        return;
         timer += Time.deltaTime;
         if (timer >= 1)
         {

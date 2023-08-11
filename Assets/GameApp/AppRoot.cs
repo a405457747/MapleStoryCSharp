@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MapleStory;
-
+using static MapleStory.LogNote;
 public class AppRoot : GameRootBase
 {
 
@@ -19,7 +19,7 @@ public class AppRoot : GameRootBase
 
     void Start()
     {
-        LogNote.Print("AppRoot Start");
+        Print("AppRoot","Start");
     }
     
 }
