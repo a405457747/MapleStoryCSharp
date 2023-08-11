@@ -24,7 +24,31 @@
           
         
           
-            CWK = 23,
+            CWK = 0,
+          
+        
+          
+            BB = 3,
+          
+        
+          
+            AA =new List<int> { 1,2,3 },
+          
+        
+          
+            DD =new List<bool> { true },
+          
+        
+          
+            EE =new List<string> { "a","b" },
+          
+        
+          
+            WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+          
+        
+          
+            XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
           
         
       
@@ -59,7 +83,31 @@
                 
               
                 
-                  CWK = 23,
+                  CWK = 0,
+                
+              
+                
+                  BB = 3,
+                
+              
+                
+                  AA =new List<int> { 1,2,3 },
+                
+              
+                
+                  DD =new List<bool> { true },
+                
+              
+                
+                  EE =new List<string> { "a","b" },
+                
+              
+                
+                  WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+                
+              
+                
+                  XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
                 
               
             },
@@ -87,7 +135,31 @@
                 
               
                 
-                  CWK = 33,
+                  CWK = 0,
+                
+              
+                
+                  BB = 0,
+                
+              
+                
+                  AA =new List<int> { 2,3 },
+                
+              
+                
+                  DD =new List<bool> { false },
+                
+              
+                
+                  EE =new List<string> { "c" },
+                
+              
+                
+                  WW =new Dictionary<string, bool> {  },
+                
+              
+                
+                  XX =new Dictionary<string, List<double>> {  },
                 
               
             },
@@ -115,7 +187,31 @@
                 
               
                 
-                  CWK = 4,
+                  CWK = 0,
+                
+              
+                
+                  BB = 3,
+                
+              
+                
+                  AA =new List<int> { 1,5 },
+                
+              
+                
+                  DD =new List<bool> { false },
+                
+              
+                
+                  EE =new List<string> { "d" },
+                
+              
+                
+                  WW =new Dictionary<string, bool> {  },
+                
+              
+                
+                  XX =new Dictionary<string, List<double>> {  },
                 
               
             },
@@ -143,7 +239,31 @@
                 
               
                 
-                  CWK = 2,
+                  CWK = 0,
+                
+              
+                
+                  BB = 2,
+                
+              
+                
+                  AA =new List<int> { 3,2 },
+                
+              
+                
+                  DD =new List<bool> { true },
+                
+              
+                
+                  EE =new List<string> { "e" },
+                
+              
+                
+                  WW =new Dictionary<string, bool> {  },
+                
+              
+                
+                  XX =new Dictionary<string, List<double>> {  },
                 
               
             },
