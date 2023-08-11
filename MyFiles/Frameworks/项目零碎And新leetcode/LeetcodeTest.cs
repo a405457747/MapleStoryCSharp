@@ -309,5 +309,7 @@ public class LeetcodeTest : MonoBehaviour
         //ctrl+shift+f9 
 
         //shift+shift  alt+/
+		
+	    //ctrl+f10跳到指定地方呢
     }
 }

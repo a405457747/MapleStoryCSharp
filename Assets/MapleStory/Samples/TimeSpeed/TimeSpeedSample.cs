@@ -37,7 +37,6 @@ public class TimeSpeedSample : MonoBehaviour
 
     private void FixedUpdate()
     {
-        return;
         timer += Time.deltaTime;
         if (timer >= 1)
         {
