@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace MapleStory
 {
     public class TimeSpeed : MonoBehaviour
@@ -20,9 +19,9 @@ namespace MapleStory
             }
         }
 
+
         public virtual void Awake()
         {
-            
         }
     }
 }

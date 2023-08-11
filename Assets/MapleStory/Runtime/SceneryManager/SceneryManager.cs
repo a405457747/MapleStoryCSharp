@@ -9,7 +9,6 @@ namespace MapleStory
     {
         public virtual void Awake()
         {
-
         }
 
         public void LoadScene(string sceneName)

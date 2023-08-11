@@ -17,7 +17,7 @@ namespace MapleStory
             GameObject tempGo;
             if (_objs.Count == 0)
             {
-                tempGo = Object.Instantiate(AppRoot.Instance._resManager.LoadGameObject(name));
+                tempGo = Object.Instantiate(AppRoot.Instance.resManager.LoadGameObject(name));
 
                 tempGo.name = name;
             }

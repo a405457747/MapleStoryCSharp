@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace MapleStory
 {
-   public abstract class SceneState
+    public abstract class SceneState
     {
-
     }
 }

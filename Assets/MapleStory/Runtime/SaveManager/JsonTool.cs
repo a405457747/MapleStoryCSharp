@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LitJson;
 
 namespace MapleStory
 {
@@ -11,20 +12,18 @@ namespace MapleStory
         T FromJson(string json);
     }
 
-
     public class ListJson<T> : IJSON<T>
     {
         public T FromJson(string json)
         {
-            return default;
+            return JsonMapper.ToObject<T>(json);
         }
 
         public string ToJson(object obj, bool prettyPrint = false)
         {
-            throw new System.NotImplementedException();
+            return JsonMapper.ToJson(obj);
         }
     }
-
 
     public class UnityJson<T> : IJSON<T>
     {
@@ -42,6 +41,6 @@ namespace MapleStory
 
     public static class JsonTool<T>
     {
-        public static IJSON<T> CurTool = new UnityJson<T>();
+        public static IJSON<T> CurTool = new ListJson<T>();
     }
 }

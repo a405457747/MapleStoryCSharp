@@ -6,9 +6,6 @@ using MapleStory;
 using System.Linq;
 using static MapleStory.LogNote;
 
-public abstract class IUIPanel :MonoBehaviour 
+public abstract class IUIPanel : MonoBehaviour
 {
-
-
-
 }

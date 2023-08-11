@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Text;
-
 using MapleStory;
 
 namespace MapleStory
 {
-    public class UnityJsonSave : ISave
+    public class JsonWaySave : ISave
     {
-
         public string SaveFileName { get; set; } = "saveMap.txt";
         public SaveMap SaveMap { get; set; }
 
         public void LoadData()
         {
-
             var saveFile = System.IO.Path.Combine(Application.persistentDataPath, SaveFileName);
 
             if (File.Exists(saveFile) == false)
@@ -24,29 +21,26 @@ namespace MapleStory
 
             var tempStr = GetSaveMapString();
 
-
-
-
             SaveMap = tempStr == ""
                 ? new SaveMap()
-                : JsonTool<SaveMap>.CurTool.FromJson(tempStr);// JsonMapper.ToObject<SaveMap>(tempStr); // JsonUtility.FromJson<SaveMap>(tempStr);
+                : JsonTool<SaveMap>.CurTool
+                    .FromJson(tempStr);
         }
 
         public void SaveData()
         {
-            //PlayerPrefs.SetString("SaveKey", JsonUtility.ToJson(SaveMap));
+            var jsonStr = JsonTool<SaveMap>.CurTool.ToJson(SaveMap, false);
 
-            var jsonStr =JsonTool<SaveMap>.CurTool.ToJson(SaveMap,false);//  JsonMapper.ToJson(SaveMap); //JsonUtility.ToJson(SaveMap);
             File.WriteAllText(System.IO.Path.Combine(Application.persistentDataPath, SaveFileName), jsonStr,
                 new UTF8Encoding(false));
-            LogNote.Info("SaveData");
+            
+            LogNote.Info("SaveData Success!");
         }
 
         public string GetSaveMapString()
         {
             return File.ReadAllText(System.IO.Path.Combine(Application.persistentDataPath, SaveFileName),
                 new UTF8Encoding(false));
-            // return PlayerPrefs.GetString("SaveKey", "");
         }
     }
 }

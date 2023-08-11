@@ -23,20 +23,19 @@ namespace MapleStory
     }
 
 
-//为了游戏梦想，以后的api接口尽量两个名字，并且不替换，而且工具类只增不删，如果别人的代码只要自己修改了，就算自己的。
-//Unity架构本身很好用了，有必要的时候还是要用virtual组件，而不是抽象重系统。重系统是全局组件哈哈。
+
 
 //todo warn UI组件挂着引用重命名很危险，预制体引用会丢失
     public class GameRootBase : MonoBehaviour
     {
         private readonly Dictionary<string, MonoBehaviour> _views = new Dictionary<string, MonoBehaviour>();
-     
-
         private Transform canvasTrans;
 
-        public ResManager _resManager { get; private set; }
-
-        private SaveManager _saveManager; 
+        public ResManager resManager { get; private set; }
+        public SaveManager saveManager { get; private set; }
+        public AudioManager audioManager { get; private set; }
+        public MenuManager menuManager { get; private set; }
+        
         
         protected virtual void Awake()
         {
@@ -44,16 +43,15 @@ namespace MapleStory
 
             canvasTrans = GameObject.Find("Canvas").transform;
 
-            _resManager = this.gameObject.AddComponent<ResManager>();
-            _saveManager = this.gameObject.AddComponent<SaveManager>();
+            resManager = this.gameObject.AddComponent<ResManager>();
+            saveManager = this.gameObject.AddComponent<SaveManager>();
+            audioManager = this.gameObject.AddComponent<AudioManager>();
+            menuManager = this.gameObject.AddComponent<MenuManager>();
         }
-
-
+        
         protected virtual void FixedUpdate()
         {
-
         }
-
 
         public void InitSystem<T>()
         {
@@ -63,26 +61,22 @@ namespace MapleStory
         {
         }
 
-
-
         public T OpenPanel<T>(PanelTier panelTier = PanelTier.Default) where T : MonoBehaviour
         {
             var viewName = typeof(T).Name;
             if (_views.ContainsKey(viewName) == false)
             {
-                var go = Instantiate(_resManager.LoadGameObject(viewName));
+                var go = Instantiate(resManager.LoadGameObject(viewName));
                 go.name = viewName;
 
-                var t = go.GetComponent<T>(); //<T>();
+                var t = go.GetComponent<T>(); 
                 if (t == null) t = go.AddComponent<T>();
 
                 t.transform.SetParent(canvasTrans.Find(panelTier.ToString()), false);
-                //t.Initialize(viewName);
                 _views[viewName] = t;
             }
 
             var res = _views[viewName] as T;
-
             res.gameObject.SetActive(true);
 
             return res;
