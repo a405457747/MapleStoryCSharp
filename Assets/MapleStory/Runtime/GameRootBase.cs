@@ -36,26 +36,9 @@ namespace MapleStory
         public SaveManager saveManager { get; private set; }
         public AudioManager audioManager { get; private set; }
         public MenuManager menuManager { get; private set; }
+        public PoolManager poolManager { get; private set; }
         
         public LogoPanel logoPanel { get; private set; }
-        protected virtual void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-
-            canvasTrans = GameObject.Find("Canvas").transform;
-            
-            resManager = this.gameObject.AddComponent<ResManager>();
-            saveManager = this.gameObject.AddComponent<SaveManager>();
-            audioManager = this.gameObject.AddComponent<AudioManager>();
-            menuManager = this.gameObject.AddComponent<MenuManager>();
-            
-            logoPanel = OpenPanel<LogoPanel>();
-            logoPanel.mainImageSprite(resManager.LoadSprite("logo"));
-            Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>
-            {
-                ClosePanel<LogoPanel>();
-            });
-        }
         
         protected virtual void FixedUpdate()
         {
@@ -74,7 +57,7 @@ namespace MapleStory
             var viewName = typeof(T).Name;
             if (_views.ContainsKey(viewName) == false)
             {
-                var go = Instantiate(resManager.LoadGameObject(viewName));
+                var go = Instantiate( Resources.Load<GameObject>(viewName));
                 go.name = viewName;
 
                 var t = go.GetComponent<T>(); 
@@ -100,5 +83,34 @@ namespace MapleStory
 
             return res;
         }
+        
+        protected virtual void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+
+            canvasTrans = GameObject.Find("Canvas").transform;
+            
+            logoPanel = OpenPanel<LogoPanel>();
+            
+            resManager = this.gameObject.AddComponent<ResManager>();
+            saveManager = this.gameObject.AddComponent<SaveManager>();
+            audioManager = this.gameObject.AddComponent<AudioManager>();
+            menuManager = this.gameObject.AddComponent<MenuManager>();
+            poolManager = this.gameObject.AddComponent<PoolManager>();
+           
+
+            LogoShow();
+        }
+
+        void LogoShow()
+        {
+            logoPanel.mainImageSprite(resManager.LoadSprite("logo"));
+            Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>
+            {
+                ClosePanel<LogoPanel>();
+            });
+        }
+        
+
     }
 }

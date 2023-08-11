@@ -19,16 +19,11 @@ public class AppRoot : GameRootBase
 
     void Start()
     {
-        Print("AppRoot","Start！");
-        var a = 3;
-        a += 2;
-        a += 3;
-        a += Sum(2, 5);
-        Print(a);
+        Print("AppRoot","Start!!!");
+
+        decimal ks = -222.223m;
+        print(ks+0.3m);
+        Info("Version is 0.0.2",ks);
     }
 
-    int Sum(int a, int b)
-    {
-        return a + b;
-    }
 }

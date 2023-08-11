@@ -18,7 +18,6 @@ public class TimeSpeedSample : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(1))
             .Subscribe(_ => { Debug.Log("延时一秒 over"); });
 
-        return;
         StartCoroutine(ss());
 
         var cube = GameObject.Find("Cube");
