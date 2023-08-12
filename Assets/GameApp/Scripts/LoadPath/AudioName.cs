@@ -10,7 +10,7 @@ public static class AudioName
 
         public static string  StartBackground=@"bg\StartBackground";
 
-        public static string  Fire=@"sound\UI\Fire";
+        public static string  Fire=@"sound\Fire";
 
         
     
