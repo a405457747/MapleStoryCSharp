@@ -46,7 +46,7 @@ namespace MapleStory
         {
             if (_audioClips.ContainsKey(name)==false)
             {
-                _audioClips.Add(name,Resources.Load<AudioClip>( Path.Combine("audio",name)));
+                _audioClips.Add(name,Resources.Load<AudioClip>( Path.Combine("Audio",name)));
             }
 
             return _audioClips[name];
@@ -54,7 +54,7 @@ namespace MapleStory
 
         public Sprite LoadSprite(string name)
         {
-            return Resources.Load<Sprite>(name);
+            return Resources.Load<Sprite>(Path.Combine("Sprite",name));
         }
 
         public Material LoadMaterial(string name)
@@ -69,7 +69,7 @@ namespace MapleStory
 
         public TextAsset LoadTextAsset(string name)
         {
-            return Resources.Load<TextAsset>(name);
+            return Resources.Load<TextAsset>(Path.Combine("Text",name));
         }
 
         public SpriteAtlas LoadSpriteAtlas(string name)

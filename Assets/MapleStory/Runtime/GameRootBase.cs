@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using MapleStory;
 using UniRx;
 using UnityEngine;
@@ -57,7 +58,7 @@ namespace MapleStory
             var viewName = typeof(T).Name;
             if (_views.ContainsKey(viewName) == false)
             {
-                var go = Instantiate( Resources.Load<GameObject>(viewName));
+                var go = Instantiate( Resources.Load<GameObject>(Path.Combine("UI", viewName)));
                 go.name = viewName;
 
                 var t = go.GetComponent<T>(); 
