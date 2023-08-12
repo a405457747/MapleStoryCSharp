@@ -19,14 +19,6 @@
             ChineseTraditional = "cccww222",
           
         
-          
-            Nihao = 231,
-          
-        
-          
-            buyao = true,
-          
-        
       
       
 
@@ -52,42 +44,6 @@
               
                 
                   ChineseTraditional = "cccww222",
-                
-              
-                
-                  Nihao = 231,
-                
-              
-                
-                  buyao = true,
-                
-              
-            },
-          
-            {
-              
-                
-                  ID = "2",
-                
-              
-                
-                  ChineseSimplified = "ss",
-                
-              
-                
-                  English = "dd",
-                
-              
-                
-                  ChineseTraditional = "0",
-                
-              
-                
-                  Nihao = 0,
-                
-              
-                
-                  buyao = true,
                 
               
             },

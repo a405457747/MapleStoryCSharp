@@ -14,10 +14,6 @@
     
       public string ChineseTraditional;
     
-      public double Nihao;
-    
-      public bool buyao;
-    
       public static List<LanguageTable> Datas = new List<LanguageTable>(){
       
         new LanguageTable {
@@ -38,55 +34,12 @@
               ChineseTraditional = "cccww222",
             
           
-            
-              Nihao = 231,
-            
-          
-            
-              buyao = true,
-            
-          
-        },
-      
-        new LanguageTable {
-          
-            
-              ID = "2",
-            
-          
-            
-              ChineseSimplified = "ss",
-            
-          
-            
-              English = "dd",
-            
-          
-            
-              ChineseTraditional = "0",
-            
-          
-            
-              Nihao = 0,
-            
-          
-            
-              buyao = true,
-            
-          
         },
       
     };
 
     // CUSTOM_REGION
-    void sssk()
-    {
 
-    }
-    void skkw()
-    {
-       //
-    }
     // CUSTOM_REGION
 
     public static LanguageTable Data=>Datas[0];

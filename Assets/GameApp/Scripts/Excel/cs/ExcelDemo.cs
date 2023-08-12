@@ -39,7 +39,7 @@
             
           
             
-              English = "airww22",
+              English = "333",
             
           
             
@@ -91,7 +91,7 @@
             
           
             
-              English = "SSD222222",
+              English = "S444",
             
           
             
@@ -143,7 +143,7 @@
             
           
             
-              English = "333ss222233",
+              English = "5555",
             
           
             

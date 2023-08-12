@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/MapleStory/Samples/MenuManager/numberRoll.unity
     guid: c3020ae35aefe184e98db9b74d36b2f9
   - enabled: 1
-    path: Assets/GameApp/GameApp.unity
+    path: Assets/GameApp/Scenes/GameApp.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
