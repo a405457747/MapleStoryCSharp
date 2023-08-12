@@ -27,6 +27,7 @@ namespace MapleStory
 
     public class ResManager : MonoBehaviour, IAssetFactory
     {
+        private Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
         public virtual void Awake()
         {
@@ -42,7 +43,12 @@ namespace MapleStory
 
         public AudioClip LoadAudioClip(string name)
         {
-            return Resources.Load<AudioClip>(name);
+            if (_audioClips.ContainsKey(name)==false)
+            {
+                _audioClips.Add(name,Resources.Load<AudioClip>(name));
+            }
+
+            return _audioClips[name];
         }
 
         public Sprite LoadSprite(string name)

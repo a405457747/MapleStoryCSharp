@@ -24,6 +24,9 @@ public class AppRoot : GameRootBase
         decimal ks = -222.223m;
         print(ks+0.3m);
         Info("Version is 0.0.2",ks);
+        print("hello");
+        
     }
+    
 
 }
