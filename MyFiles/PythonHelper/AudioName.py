@@ -76,4 +76,4 @@ traverse_folder(dirPath, files_dict)
 
 tt=Template(replaceStr);
 afterStr=tt.render(files_dict=files_dict);
-writeText(os.path.join(dirPath, "../../Scripts/LoadPath/AudioName.cs"),afterStr);
+writeText(os.path.join(dirPath, "../../../Scripts/LoadPath/AudioName.cs"),afterStr);

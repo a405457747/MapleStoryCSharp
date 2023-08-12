@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public static  class AudioName
+public static class AudioName
 {
 
         public static string  StartBackground=@"bg\StartBackground";
