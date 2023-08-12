@@ -50,7 +50,7 @@ namespace MapleStory
         [MenuItem("MapleStory/UI/CreateUI %t")]
         static void CreateUI()
         {
-            string targetScriptDir = Path.Combine(Application.dataPath, "GameApp/UI/Panel");
+            string targetScriptDir = Path.Combine(Application.dataPath, "GameApp/Scripts/UI");
 
             GameObject selectedObject = Selection.activeGameObject;
             string goName = selectedObject.name;

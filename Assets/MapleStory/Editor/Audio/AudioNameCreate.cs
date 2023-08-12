@@ -15,7 +15,7 @@ public static  class AudioNameCreate
     public static void CreateAudioName()
     {
         var audioDirPath =
-            Path.Combine(Application.dataPath.Replace("/Assets",""),"Assets/GameApp/Audio/Resources");
+            Path.Combine(Application.dataPath.Replace("/Assets",""),"Assets/GameApp/Audios/Resources/Audio");
 
         var pyPath=Path.Combine(Application.dataPath.Replace("/Assets",""),"MyFiles/PythonHelper/AudioName.py");
 

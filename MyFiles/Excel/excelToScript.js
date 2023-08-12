@@ -3,7 +3,7 @@ var fs = require('fs');
 let ejs = require("ejs");
 const path = require('path');
 
-let generateTemplatePath = "../../Assets/GameApp/Excel";//生成模板的路径 
+let generateTemplatePath = "../../Assets/GameApp/Scripts/Excel";//生成模板的路径 
 
 
 let fileTypeEnum = { empty: -1, cs: 0, js: 1, lua: 2, php: 3, java: 4, python: 5, json: 6, csv: 7,xml:8 };

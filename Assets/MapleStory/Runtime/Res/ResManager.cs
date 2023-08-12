@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -45,7 +46,7 @@ namespace MapleStory
         {
             if (_audioClips.ContainsKey(name)==false)
             {
-                _audioClips.Add(name,Resources.Load<AudioClip>(name));
+                _audioClips.Add(name,Resources.Load<AudioClip>( Path.Combine("audio",name)));
             }
 
             return _audioClips[name];
