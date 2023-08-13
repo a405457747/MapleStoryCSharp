@@ -1,1 +1,0 @@
-choco install python; choco install nodejs-lts
