@@ -19,8 +19,7 @@ namespace MapleStory
 
 
 
-        public GameObject LoadEffect(string name);
-        public GameObject LoadPanel(string name);
+
         public GameObject LoadPool(string name);
         public Sprite LoadAtlasSprite(string name, string name2);
 
@@ -86,20 +85,11 @@ namespace MapleStory
         {
             return Resources.Load<T>(name);
         }
-
-        public GameObject LoadEffect(string name)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public GameObject LoadPanel(string name)
-        {
-            throw new System.NotImplementedException();
-        }
+        
 
         public GameObject LoadPool(string name)
         {
-            throw new System.NotImplementedException();
+            return Resources.Load<GameObject>(Path.Combine("Pool",name));
         }
 
         public Sprite LoadAtlasSprite(string name, string name2)

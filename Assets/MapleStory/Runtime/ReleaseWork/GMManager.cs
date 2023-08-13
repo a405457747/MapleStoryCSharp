@@ -24,9 +24,9 @@ namespace MapleStory
         }
 
         [AutoRunAction]
-        private static void printClassName()
+        private static void Func1()
         {
-            Debug.Log("I am GMManager");
+
         }
 
         private void AutoRunFunc()

@@ -17,7 +17,7 @@ namespace MapleStory
             GameObject tempGo;
             if (_objs.Count == 0)
             {
-                tempGo = Object.Instantiate(AppRoot.Instance.resManager.LoadGameObject(name));
+                tempGo = Object.Instantiate(AppRoot.Instance.resManager.LoadPool(name));
 
                 tempGo.name = name;
             }
@@ -38,7 +38,7 @@ namespace MapleStory
             obj.SetActive(false);
 
             if (_objs.Contains(obj))
-                Debug.LogError("Already existed.");
+                MapleStory.LogNote.Critical( "Already existed.");
             else
                 _objs.Enqueue(obj);
         }

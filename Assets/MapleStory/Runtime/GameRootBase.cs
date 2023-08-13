@@ -40,6 +40,7 @@ namespace MapleStory
         public PoolManager poolManager { get; private set; }
         
         public LogoPanel logoPanel { get; private set; }
+        public GMManager gmManager { get; private set; }
         
         protected virtual void FixedUpdate()
         {
@@ -98,7 +99,7 @@ namespace MapleStory
             audioManager = this.gameObject.AddComponent<AudioManager>();
             menuManager = this.gameObject.AddComponent<MenuManager>();
             poolManager = this.gameObject.AddComponent<PoolManager>();
-           
+            gmManager = gameObject.AddComponent<GMManager>();
 
             LogoShow();
         }
