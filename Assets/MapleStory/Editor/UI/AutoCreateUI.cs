@@ -80,7 +80,7 @@ namespace MapleStory
                 var sendObj = new SendObj()
                 { data1 = nameTypeData, csFilePath = Path.Combine(targetScriptDir, goName + ".cs") };
 
-                var sendObjJson = JsonTool<SendObj>.CurTool.ToJson(sendObj, false);
+                var sendObjJson = JsonHelper<SendObj>.CurTool.ToJson(sendObj, false);
 
                 ToolRoot.WriteToFile(jsonPath, sendObjJson);
 

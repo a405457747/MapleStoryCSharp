@@ -16,7 +16,6 @@ namespace MapleStory
         string cmdStr = "";
         string resultStr = "";
 
-        public bool IsRelease;
 
         public virtual void Awake()
         {
@@ -66,8 +65,6 @@ namespace MapleStory
 
         void OnGUI()
         {
-            if (IsRelease == false)
-            {
                 GUI.color = Color.yellow;
                 cmdStr = GUI.TextField(new Rect(10, 30, 100, 30), cmdStr, 10);
                 if (GUI.Button(new Rect(10, 60, 100, 30), "运行"))
@@ -75,7 +72,6 @@ namespace MapleStory
                     resultStr = RunFunc(cmdStr);
                 }
                 GUI.Label(new Rect(10, 90, 100, 30), resultStr);
-            }
         }
 
         private void FixedUpdate()

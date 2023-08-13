@@ -23,13 +23,13 @@ namespace MapleStory
 
             SaveMap = tempStr == ""
                 ? new SaveMap()
-                : JsonTool<SaveMap>.CurTool
+                : JsonHelper<SaveMap>.CurTool
                     .FromJson(tempStr);
         }
 
         public void SaveData()
         {
-            var jsonStr = JsonTool<SaveMap>.CurTool.ToJson(SaveMap, false);
+            var jsonStr = JsonHelper<SaveMap>.CurTool.ToJson(SaveMap, false);
 
             File.WriteAllText(System.IO.Path.Combine(Application.persistentDataPath, SaveFileName), jsonStr,
                 new UTF8Encoding(false));

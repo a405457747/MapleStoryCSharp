@@ -39,7 +39,7 @@ namespace MapleStory
         }
     }
 
-    public static class JsonTool<T>
+    public static class JsonHelper<T>
     {
         public static IJSON<T> CurTool = new ListJson<T>();
     }
