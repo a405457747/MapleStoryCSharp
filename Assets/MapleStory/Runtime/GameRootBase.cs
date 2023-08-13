@@ -99,7 +99,7 @@ namespace MapleStory
             audioManager = this.gameObject.AddComponent<AudioManager>();
             menuManager = this.gameObject.AddComponent<MenuManager>();
             poolManager = this.gameObject.AddComponent<PoolManager>();
-            gmManager = gameObject.AddComponent<GMManager>();
+            //gmManager = gameObject.AddComponent<GMManager>();
 
             LogoShow();
         }
