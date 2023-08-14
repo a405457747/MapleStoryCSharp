@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os;
 import shutil;
 import csv;
@@ -9,27 +8,7 @@ import uuid
 from jinja2 import Template;
 import sys;
 
-
-
-dirPath =os.path.abspath(sys.argv[1]);    
-
-#relative_path = os.path.relpath(path, start) 
-
-'''
-set=None;
-with open('set.json', 'r', encoding='utf-8') as f:
-    set =json.loads(f.read());
-'''
-
-def readText(file, mode="r"):
-    with open(file, mode, encoding='utf-8') as f:
-        return f.read();
-def writeText(file,content,mode="w"):
-    with open(file,mode,encoding="utf-8") as f:
-        f.write(content);
-
-
-
+# 文件模版
 replaceStr='''
 using System;
 using System.Collections;
@@ -49,6 +28,18 @@ public static class AudioName
 }
 '''
 
+# 音频资源的加载目录
+dirPath =os.path.abspath(sys.argv[1]);
+
+def readText(file, mode="r"):
+    with open(file, mode, encoding='utf-8') as f:
+        return f.read();
+
+def writeText(file,content,mode="w"):
+    with open(file,mode,encoding="utf-8") as f:
+        f.write(content);
+
+# 递归获取音频文件的加载路径
 def traverse_folder(folder_path, files_dict):
     for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
@@ -58,22 +49,14 @@ def traverse_folder(folder_path, files_dict):
             if(file_path.endswith(".meta")==False):
                 suffix =os.path.splitext(file_path)[-1];
                 dictKey = re.sub(suffix,"",file_name);
-                #dictValue =re.sub(r"%s"%dirPath,"",re.sub(suffix,"",file_path))
-                #print("suffix",suffix);
-                #print(re.sub(dirPath,"", os.path.dirname(file_path)));
                 files_dict[dictKey] =re.sub(suffix,"", os.path.relpath(file_path,dirPath));
-                #print(dictKey,file_path,os.path.relpath(file_path,dirPath));
-                
-            
 
-# 创建一个空字典用于保存文件名和路径
-files_dict = {}
-# 调用递归函数来遍历文件夹
-traverse_folder(dirPath, files_dict)
-# 打印字典中的文件名和路径
-#print(files_dict);
+def main():
+    # 键是文件名，值是加载路径
+    files_dict = {}
+    traverse_folder(dirPath, files_dict)
+    writeText(os.path.join(dirPath, "../../../Scripts/LoadPath/AudioName.cs"),Template(replaceStr).render(files_dict=files_dict));
+    ...
 
-
-tt=Template(replaceStr);
-afterStr=tt.render(files_dict=files_dict);
-writeText(os.path.join(dirPath, "../../../Scripts/LoadPath/AudioName.cs"),afterStr);
+if __name__ == '__main__':
+    main();
