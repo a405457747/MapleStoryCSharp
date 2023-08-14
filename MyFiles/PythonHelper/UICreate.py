@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os;
 import shutil;
 import csv;
@@ -12,10 +11,12 @@ import sys;
 def readText(file, mode="r"):
     with open(file, mode, encoding='utf-8') as f:
         return f.read();
+
 def writeText(file,content,mode="w"):
     with open(file,mode,encoding="utf-8") as f:
         f.write(content);
 
+# 获取渲染后的数据
 def getReplaceContent(data):
     t='''
     {%- for k,v in data1.items() %}
@@ -41,23 +42,23 @@ def getReplaceContent(data):
         {% endfor %}
     }
     '''
-    tt=Template(t);
-
-    return tt.render(data1=data['data1']);
+    return Template(t).render(data1=data['data1']);
     
 
+# 主要操作data是字典
 def fileAction(path,data):
     csText =readText(path)
 
     replaceContent=getReplaceContent(data);
 
-    #print("replaceContent",replaceContent);
-    csText2=re.sub('( {4}///AC\n)(.*)( {4}///AC\n)',"    ///AC\n"+replaceContent+"\n    ///AC\n",csText,flags=re.DOTALL);# warn 硬编码
-    if( csText!=csText2  ): #or (len(data['data1'])==0)
+    csText2=re.sub('( {4}///AC\n)(.*)( {4}///AC\n)',"    ///AC\n"+replaceContent+"\n    ///AC\n",csText,flags=re.DOTALL);# todo warn 硬编码
+
+    if( csText!=csText2  ):
         writeText(path,csText2);
-    else:# warn 这里时序不够优雅
+    else:# 这里时序位置不好
         if("FindAllComponent"  in csText2):
             return;
+
         t='''
 
     ///AC
@@ -71,22 +72,15 @@ def fileAction(path,data):
     }        
 '''
         csText3=re.sub('^\}',t+"}",csText2,flags=re.MULTILINE);
-        #print(csText3);
+        # 添加上Awake()
         writeText(path,csText3);
-    
 
+def main():
+    # Unity传递过来的是json的路径，要自己去读取
+    readT=readText(os.path.abspath(sys.argv[1]));
+    dict=json.loads(readT);
+    fileAction(dict['csFilePath'],dict);
+    ...
 
-#print("i am python",sys.argv[1],json.loads(sys.argv[1]))
-#SendObjText=readText("./SendObj.txt");
-#dict=json.loads(sys.argv[1])
-#str ='"' +sys.argv[1]+'"';
-#print(str,"i am python",json.loads(sys.argv[1]),strict=False);
-
-
-readT=readText(os.path.abspath(sys.argv[1]));
-#print(readT);
-
-
-dict=json.loads(readT);
-fileAction(dict['csFilePath'],dict);
-
+if __name__ == '__main__':
+    main();

@@ -27,9 +27,9 @@ public static class AudioName
     
 }
 '''
-
 # 音频资源的加载目录
 dirPath =os.path.abspath(sys.argv[1]);
+
 
 def readText(file, mode="r"):
     with open(file, mode, encoding='utf-8') as f:
