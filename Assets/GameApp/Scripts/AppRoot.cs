@@ -9,14 +9,14 @@ public class AppRoot : GameRootBase
 
     public static AppRoot Instance { get; private set; }
 
-     //-DEL-我喜欢你
+                        //-DEL-我喜欢你
      
      
-     /**-DEL-他们
-      * 我爱
-      *  你
-      * 
-      */
+             /**-DEL-他们
+              * 我爱
+              *  你
+              * 
+              */
     protected override void Awake()
     {
         base.Awake();
