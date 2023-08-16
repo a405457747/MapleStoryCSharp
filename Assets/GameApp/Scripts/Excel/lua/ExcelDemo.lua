@@ -20,7 +20,7 @@
           
         
           
-            Nike = true,
+            Nike = false,
           
         
           
@@ -79,7 +79,7 @@
                 
               
                 
-                  Nike = true,
+                  Nike = false,
                 
               
                 
@@ -123,15 +123,15 @@
                 
               
                 
-                  Chinese = "7773333",
+                  Chinese = "77733332",
                 
               
                 
-                  Bike = 32,
+                  Bike = 33,
                 
               
                 
-                  Nike = false,
+                  Nike = true,
                 
               
                 
@@ -175,11 +175,11 @@
                 
               
                 
-                  Chinese = "888",
+                  Chinese = "88822",
                 
               
                 
-                  Bike = 4,
+                  Bike = 42,
                 
               
                 
@@ -227,15 +227,15 @@
                 
               
                 
-                  Chinese = "1111",
+                  Chinese = "111133",
                 
               
                 
-                  Bike = 5,
+                  Bike = 53,
                 
               
                 
-                  Nike = true,
+                  Nike = false,
                 
               
                 

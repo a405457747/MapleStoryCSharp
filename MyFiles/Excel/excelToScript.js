@@ -197,6 +197,9 @@ class FileType {
     //这个保留字段元数据信息
     this.fieldMessages = new Array(matrixHeadDic.size);
     for (let [k, v] of matrixHeadDic) {
+      var defaultStr =v.defaultStr;
+      //console.log("dfVlue",defaultStr);
+
       let idx = v.idx;
       let enumFieldType = this.getFieldTypeByTypeStr(v.typeStr);//这个是解析过后的枚举
       //如果是obj类型的字段就特殊处理，要加new {}
@@ -207,9 +210,9 @@ class FileType {
     //这个保留字段实际值信息
     this.fieldValueObjs = new Array(textMatrix.length - 1);//为啥是-1，因为textMatrix是包含头的咱们只要内容。
     for (let i = 0; i < this.fieldValueObjs.length; i++) {
-      this.fieldValueObjs[i] = this.getFieldValueObj(i);
+      this.fieldValueObjs[i] = this.getFieldValueObj(i,this.fieldMessages);
     }
-
+   
   }
 
   getFieldTypeByTypeStr(typeStr) {
@@ -280,10 +283,12 @@ class FileType {
       case fieldTypeEnum.long:
         return finalTextMatrixItem_val;
       case fieldTypeEnum.bool:
+        //不支持true和false，王信文的极致实用主义
         return finalTextMatrixItem_val === "0" ? "false" : "true";
       case fieldTypeEnum.dbl:
         return finalTextMatrixItem_val;
       case fieldTypeEnum.str:
+        //不支持可以带冒号的那种，1怕有bug这个库全局变量太多不一定能认识清楚，2说不定有保留冒号这个需求。
         return `"${finalTextMatrixItem_val}"`;//这个字符串要加冒号的。
       case fieldTypeEnum.obj:
         return finalTextMatrixItem_val;
@@ -311,9 +316,10 @@ class FileType {
     throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。DefaultStrEmptyFixed")
   }
 
-  getFieldValueObj(idx) {
+  getFieldValueObj(idx,fieldMessages) {
     let textMatrixItem = textMatrix[idx + 1];//idx从0开始，我们只要内容所以要加1.
 
+    //console.log(textMatrixItem.length);
 
     let scriptRightValueArr = [];
     for (let i = 0; i < textMatrixItem.length; i++) {
@@ -328,9 +334,10 @@ class FileType {
         if (this.fieldMessages[i].defaultStr === "") {
 
           //如果有第三个字段，我们用第三个字段的值，否则设置一个程序上的默认值呢。
-          haveSetDefaultValue=true;
+          let fieldMessagesIdx=i;//这个和i都是从0开始的哦
+          let haveSetDefaultValue=fieldMessages[fieldMessagesIdx].defaultStr!="";
           if(haveSetDefaultValue){
-            finalTextMatrixItem_val="ggk";
+            finalTextMatrixItem_val=fieldMessages[fieldMessagesIdx].defaultStr;
           }else {
             finalTextMatrixItem_val = this.DefaultStrEmptyFixed(textMatrixItem_type);
           }
@@ -343,13 +350,13 @@ class FileType {
       let regularObj = this.RegularStrByfieldType(textMatrixItem_type);
       if (regularObj.test(finalTextMatrixItem_val)) {
       } else {
-        console.warn("警告请必须修正哦，因为正则校验失败，有个字段是错误的格式，它是 " + finalTextMatrixItem_val);
+        console.warn("正则校验失败，有个字段是错误的格式，它是 " + finalTextMatrixItem_val);
       }
 
       let scriptRightValue = this.ScriptRightValueByfieldType(textMatrixItem_type, finalTextMatrixItem_val);
       scriptRightValueArr[i] = scriptRightValue;
     }
-    console.log("idx is "+idx,"backData length "+scriptRightValueArr.length);
+    //console.log("idx is "+idx,"backData length "+scriptRightValueArr.length);
     return scriptRightValueArr;
   }
 
