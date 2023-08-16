@@ -43,11 +43,11 @@
             
           
             
-              Chinese = "3333",
+              Chinese = "33333333",
             
           
             
-              Bike = 32333,
+              Bike = 2,
             
           
             
@@ -95,11 +95,11 @@
             
           
             
-              Chinese = "777",
+              Chinese = "7773333",
             
           
             
-              Bike = 42323,
+              Bike = 32,
             
           
             
@@ -127,11 +127,11 @@
             
           
             
-              WW =new Dictionary<string, bool> {  },
+              WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
             
           
             
-              XX =new Dictionary<string, List<double>> {  },
+              XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
             
           
         },
@@ -151,7 +151,7 @@
             
           
             
-              Bike = 5332,
+              Bike = 4,
             
           
             
@@ -179,11 +179,11 @@
             
           
             
-              WW =new Dictionary<string, bool> {  },
+              WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
             
           
             
-              XX =new Dictionary<string, List<double>> {  },
+              XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
             
           
         },
@@ -203,7 +203,7 @@
             
           
             
-              Bike = 6,
+              Bike = 5,
             
           
             
@@ -231,11 +231,11 @@
             
           
             
-              WW =new Dictionary<string, bool> {  },
+              WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
             
           
             
-              XX =new Dictionary<string, List<double>> {  },
+              XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
             
           
         },

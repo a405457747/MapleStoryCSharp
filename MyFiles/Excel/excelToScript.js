@@ -293,7 +293,7 @@ class FileType {
   }
 
 
-  //当默认值是空字符串时候，我手动帮它造一个格子里面的值，注意是格子里面的值哦，之后还要解析的呢，所以bool我用0或者1
+  //当默认值是空字符串时候，我手动帮它造一个格子里面的值，注意是格子里面的值哦，之后还要解析的呢，所以bool我用0或者1，long也是"0"
   DefaultStrEmptyFixed(fieldTypeEnumValue) {
     switch (fieldTypeEnumValue) {
       case fieldTypeEnum.long:
@@ -326,7 +326,14 @@ class FileType {
 
         //如果默认值你没有写，我要手动帮你造一个值，没办法我对策划太好了。
         if (this.fieldMessages[i].defaultStr === "") {
-          finalTextMatrixItem_val = this.DefaultStrEmptyFixed(textMatrixItem_type);
+
+          //如果有第三个字段，我们用第三个字段的值，否则设置一个程序上的默认值呢。
+          haveSetDefaultValue=true;
+          if(haveSetDefaultValue){
+            finalTextMatrixItem_val="ggk";
+          }else {
+            finalTextMatrixItem_val = this.DefaultStrEmptyFixed(textMatrixItem_type);
+          }
         } else {
           finalTextMatrixItem_val = this.fieldMessages[i].defaultStr;
         }
@@ -342,7 +349,7 @@ class FileType {
       let scriptRightValue = this.ScriptRightValueByfieldType(textMatrixItem_type, finalTextMatrixItem_val);
       scriptRightValueArr[i] = scriptRightValue;
     }
-
+    console.log("idx is "+idx,"backData length "+scriptRightValueArr.length);
     return scriptRightValueArr;
   }
 
@@ -363,7 +370,7 @@ class FileType {
       res= execArr[1];
     } else {
       res="";
-      console.warn("错误必须要处理：你这属于正则捕获不成功，一定要改改")
+      // todo warn console.warn("正则捕获不成功，有可能是代码自身有问题")
     }
 
     return res. trim();
