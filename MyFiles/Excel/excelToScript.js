@@ -3,24 +3,24 @@ var fs = require('fs');
 let ejs = require("ejs");
 const path = require('path');
 
-let generateTemplatePath = "../../Assets/GameApp/Scripts/Excel";//生成模板的路径 
+
+//生成模板的路径 
+let generateTemplatePath = "../../Assets/GameApp/Scripts/Excel";
+//监听excel路径位置
+let readExcelPath = "./";
 
 
+//文件类型
 let fileTypeEnum = { empty: -1, cs: 0, js: 1, lua: 2, php: 3, java: 4, python: 5, json: 6, csv: 7,xml:8 };
-// 我不做了YourCodeHear了。直接宣告结束妈妈的，太累了
-let fieldTypeEnum = { empty: -1, long: 0, bool: 1, dbl: 2, str: 3, obj: 4 }; //务必保持枚举的key要不一致的。   //
-
-let readExcelPath = "./";//读取的excel路径位置
-
-let isRelease = true;//方便debug
-//let curFileType = fileTypeEnum.lua;//当前生成什么类型的模板文件。
-
-//下面这3个变量对多任务不影响吧
+//类的字段类型
+let fieldTypeEnum = { empty: -1, long: 0, bool: 1, dbl: 2, str: 3, obj: 4 };
+/*下面3个变量对多任务有影响吗？*/
 let textMatrix = null;//处理过后的文本矩阵,包括头和内容
-let matrixHeadDic = null;//textMatrix再处理后的头信息字典。key是字段名-val是obj，需要进一步加工的。
-let className = null;//excel的名字当作类名。
+let matrixHeadDic = null;//textMatrix之后的头信息字典。key是字段名，val是obj，需要进一步操作。
+let className = null;//excel的文件名当成类名。
 
 
+//获取枚举的key也就是字符串
 function getEnumStr(enumType, enumInt) {
   for (let k in enumType) {
     if (enumType[k] === enumInt) {
@@ -30,10 +30,9 @@ function getEnumStr(enumType, enumInt) {
   return undefined;
 }
 
-//读取excel返回文本矩阵，
+//主要函数main
 function readExcelGetTextMatrix(excelFile) {
   let originData = xlsx.parse(excelFile)[0].data;
-  //console.log(originData);
 
   let copyData = [...originData];//这也是复制
 
@@ -49,23 +48,11 @@ function readExcelGetTextMatrix(excelFile) {
   InitFileTypeObject();
 }
 
+//写入各种类型的文件
 function InitFileTypeObject() {
   new CsFileType().writeScript(fileTypeEnum.cs);
   new LuaFileType().writeScript(fileTypeEnum.lua);
-new JsonFileType().writeScript(fileTypeEnum.json);
-  console.log("action end");
-  /*
-  let fileTypes =[fileTypeEnum.cs,fileTypeEnum.lua];
-  for(let item in fileTypes){
-    switch (item) {
-      case fileTypeEnum.cs:
-         
-        break;
-      case fileTypeEnum.lua:
-         new LuaFileType().writeScript(item);  
-    }
-  }
-  */
+  new JsonFileType().writeScript(fileTypeEnum.json);
 }
 
 function InitMatrixHeadDic(textMatrix) {
@@ -80,9 +67,9 @@ function InitMatrixHeadDic(textMatrix) {
     }
   }
 
-  //数组长度不一致的时候，填充""到拥有一致长度，这样方便设置值
+  //数组长度不一致的时候，填充""使拥有一致长度，这样方便设置值
   let fillLittleItemArr = function (littleItemArr) {
-    let maxLength = 3;//1名字2类型3默认值
+    let maxLength = 3;//类中字段顺序为：1名字2类型3默认值
     while (littleItemArr.length !== maxLength) {
       littleItemArr.push("");
     }
@@ -91,7 +78,7 @@ function InitMatrixHeadDic(textMatrix) {
   for (let i = 0; i < originHead.length; i++) {
     let item = originHead[i];
     let littleItemArr = strToTrimArray(item, "|");
-    fillLittleItemArr(littleItemArr);//同意一下长度
+    fillLittleItemArr(littleItemArr);//统一一下长度
 
     if (dic.get(littleItemArr[0]) === undefined) {
       dic.set(littleItemArr[0], getDicValObj(i, littleItemArr[1], littleItemArr[2]));
@@ -101,10 +88,9 @@ function InitMatrixHeadDic(textMatrix) {
   }
 
   matrixHeadDic = dic;
-  // console.log(matrixHeadDic);
 }
 
-//设置名字啊
+//设置类的名字，就是Excel文件名
 function setClassNames(excelFile) {
   let strArr = strToTrimArray(excelFile, ".");
   let excelName = strArr[0];
@@ -119,7 +105,7 @@ function FillAndTrimStr(copyData, headLength) {
     for (let i = 0; i < item.length; i++) {
       let cellItem = item[i];
       if (cellItem !== undefined) cellItem = cellItem.toString();//这个里面居然有int类型的数字
-      //console.log("i index is "+i,"cellItem is ",cellItem);
+      
       if (isEmptyCell(cellItem)) {
         cellItem = "";
       }
@@ -127,11 +113,10 @@ function FillAndTrimStr(copyData, headLength) {
 
       item[i] = cellItem;
     }
-    //console.log(item);
   }
 }
 
-/*从底部到头上，过滤掉全是Empty Gird的行。*/
+/*从底部到顶部，过滤掉全是空单元格的行。*/
 function FilterGrid(copyData) {
   let tailEmptyRowCount = 0;
   for (let i = copyData.length - 1; i >= 0; i--) {
@@ -139,43 +124,40 @@ function FilterGrid(copyData) {
     if (arrItem.every(item => item === "")) {
       tailEmptyRowCount += 1;
     } else {
-      break;//遇到一个不全是空白的就跳出。
+      break;//遇到一个不全是空白的就提前跳出。
     }
   }
-  copyData.length = copyData.length - tailEmptyRowCount;//裁剪尾巴全是Empty Gird的行。
-
+  copyData.length = copyData.length - tailEmptyRowCount;//这样裁剪尾巴全是空单元格的行。
 }
 
-/*校验过滤后的copyData，它中间部分是不是有全是Empty Gird的行。 */
+/*校验过滤后的copyData，它中间部分是不是有全是全是空单元格的行。*/
 function WithAEmptyRowInCenter(copyData) {
   for (let arr_item of copyData) {
     let isEmptyRow = arr_item.every(item => item === "");
     if (isEmptyRow) {
       throw new Error("错误，出现了空的一行，请至少填写一个非空白的内容吧");
     }
-    //console.log(arr_item.join(" | "));
   }
 }
 
-function getHeadLength(copyData) {//这个方法虽然trim之前，但是不可能是解析成非字符串。
+function getHeadLength(copyData) {//这个方法虽然在trim之前，但是不可能是解析成非字符串。
   let head = copyData[0];
 
   for (let item of head) {
     if (isEmptyCell(item)) {
-      throw new Error("错误，头出现了空白格子");
+      throw new Error("错误，头出现了空格子");
     }
   }
 
   return head.length;
 }
 
-
-/*是否是空白格子*/
+/*是否是空格子*/
 function isEmptyCell(item) {
   return (item === undefined) || (item.trim() === "");
 }
 
-
+//数组trim一下
 function strToTrimArray(str, interval) {
   let res = str.split(interval);
   for (let i = 0; i < res.length; i++) {
@@ -194,14 +176,10 @@ function watchExcelChange() {
   fs.watch(readExcelPath, opt, (eventType, filename) => {
     if (filename) {
       if (eventType === "change" && filename.endsWith(".xlsx") && (!filename.includes("$"))) {
-        console.log(`数据写入成功，这个excel是: ${filename}  如果只出现一条打印，表示代码执行正常，否则就错啦。`);
-
+       
         readExcelGetTextMatrix(filename);
-        //console.log(textMatrix);
+        console.log(`数据写入成功，改变的excel为: ${filename}！`);
       }
-
-    } else {
-      console.log('excel未提供');
     }
   });
 }
@@ -215,29 +193,23 @@ function writeFile(path, content) {
 }
 
 class FileType {
-
   constructor() {
     //这个保留字段元数据信息
     this.fieldMessages = new Array(matrixHeadDic.size);
     for (let [k, v] of matrixHeadDic) {
       let idx = v.idx;
-      let enumFieldType = this.getFieldTypeByTypeStr(v.typeStr);//这个解析过后的枚举
+      let enumFieldType = this.getFieldTypeByTypeStr(v.typeStr);//这个是解析过后的枚举
       //如果是obj类型的字段就特殊处理，要加new {}
       let isEnumFieldTypeObj = (enumFieldType === fieldTypeEnum.obj);
       this.fieldMessages[idx] = { fieldType: this.getFieldType(enumFieldType, v.typeStr), fieldName: k, enumFieldType: enumFieldType, defaultStr: v.defaultStr, isEnumFieldTypeObj: isEnumFieldTypeObj };
     }
-    //console.log(this.fieldMessages);
 
-
-    //这个保留字段实践值信息
+    //这个保留字段实际值信息
     this.fieldValueObjs = new Array(textMatrix.length - 1);//为啥是-1，因为textMatrix是包含头的咱们只要内容。
     for (let i = 0; i < this.fieldValueObjs.length; i++) {
       this.fieldValueObjs[i] = this.getFieldValueObj(i);
     }
 
-
-    //开始写入数据了。
-    //this.writeScript();
   }
 
   getFieldTypeByTypeStr(typeStr) {
@@ -279,7 +251,7 @@ class FileType {
         return typeStr;
     }
 
-    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。getFieldType")
+    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。")
   }
 
 
@@ -298,11 +270,11 @@ class FileType {
         return /.*/;
     }
 
-    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。RegularStrByfieldType")
+    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。")
   }
 
 
-  //脚本中的正确值设置，比如字符串要加“”，0改成false,1改成true之类的,dbl变成double,说实在的做这些缩写和默认值都是方便策划。但是缩写我都是尽量去找常见缩写，找不到就不缩写了。
+  //脚本中的正确值设置，比如字符串要加“”，0改成false,1改成true之类的,dbl变成double,说实在的做这些缩写和默认值都是方便策划。
   ScriptRightValueByfieldType(fieldTypeEnumValue, finalTextMatrixItem_val) {
     switch (fieldTypeEnumValue) {
       case fieldTypeEnum.long:
@@ -312,16 +284,16 @@ class FileType {
       case fieldTypeEnum.dbl:
         return finalTextMatrixItem_val;
       case fieldTypeEnum.str:
-        return `"${finalTextMatrixItem_val}"`;     //这个字符串要加冒号的。
+        return `"${finalTextMatrixItem_val}"`;//这个字符串要加冒号的。
       case fieldTypeEnum.obj:
         return finalTextMatrixItem_val;
     }
 
-    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。ScriptRightValueByfieldType")
+    throw new Error("错误，能匹配字段类型，但是取值方法还没有实现呢。")
   }
 
 
-  //当默认值是空字符串时候，我手动帮它造一个格子里面的值，注意是格子里面的，不是scriptRightValue,所以bool值哪里我用0或者1
+  //当默认值是空字符串时候，我手动帮它造一个格子里面的值，注意是格子里面的值哦，之后还要解析的呢，所以bool我用0或者1
   DefaultStrEmptyFixed(fieldTypeEnumValue) {
     switch (fieldTypeEnumValue) {
       case fieldTypeEnum.long:
@@ -350,9 +322,9 @@ class FileType {
 
       //对默认值统一处理一下，不是最后，scriptRightValue才是最后要弄的值。
       let finalTextMatrixItem_val = textMatrixItem_val;
-      if (textMatrixItem_val === "") {//是空字符串说明，这里是要采用了默认值了。
+      if (textMatrixItem_val === "") {//是空字符串说明，这里要采用了默认值了。
 
-        //如果默认值你没有写，我要手动帮你造一个值，没办法我对策划太好了，因为真的有人能把我的这个工具用起来。
+        //如果默认值你没有写，我要手动帮你造一个值，没办法我对策划太好了。
         if (this.fieldMessages[i].defaultStr === "") {
           finalTextMatrixItem_val = this.DefaultStrEmptyFixed(textMatrixItem_type);
         } else {
@@ -360,7 +332,7 @@ class FileType {
         }
       }
 
-      //用正则字段校验字段值的，反正obj其中的子元素我就不校验了。
+      //用正则字段校验字段值的，反正obj其中的子元素我就不校验了，因为麻烦的说。
       let regularObj = this.RegularStrByfieldType(textMatrixItem_type);
       if (regularObj.test(finalTextMatrixItem_val)) {
       } else {
@@ -369,16 +341,12 @@ class FileType {
 
       let scriptRightValue = this.ScriptRightValueByfieldType(textMatrixItem_type, finalTextMatrixItem_val);
       scriptRightValueArr[i] = scriptRightValue;
-
     }
 
-    //console.log(scriptRightValueArr);
     return scriptRightValueArr;
   }
 
-  // getFieldValue 滑倒下一行也不报错 谜之注释
-
-  //获取类的模板,暂时把数据都做在一起清爽一些
+  //获取类的模板,暂时把数据都做在一起这样清爽一些
   getEjsTemplate(customStr = "") {
     return "";
   }
@@ -390,12 +358,12 @@ class FileType {
     let regexModel = /^[\t\s]{1,}\/\/ CUSTOM_REGION(.*)[\t\s]{1,}\/\/ CUSTOM_REGION$/ms; //todo warn CUSTOM_REGION  两个地方有重复。
 
     let execArr = regexModel.exec(fullStr)
-    //console.log("execArr",execArr);
+
     if ((execArr!=null)&& execArr.length > 0) {
       res= execArr[1];
     } else {
       res="";
-      //throw new Error("错误必须处理：你这属于正则捕获不成功，一定要改改")
+      console.warn("错误必须要处理：你这属于正则捕获不成功，一定要改改")
     }
 
     return res. trim();
@@ -407,16 +375,11 @@ class FileType {
 
     //判断这个文件是否存在
     let fileExist = fs.existsSync(filePath);
-    let customStr = fileExist ? this.getCustomStr(filePath) : "";//写入数据先，先读取文件找到自定义的代码字符串。
+    let customStr = fileExist ? this.getCustomStr(filePath) : "";//写入数据，先读取文件并找到自定义的代码字符串。
     let strContent = this.getEjsTemplate(customStr);
     writeFile(filePath, strContent);
   }
 
-  /*
-  getYourCodeCustomRegionComment() {//这个你的自定义的代码包裹区域通过两个注释来实现的,不过这里的代码千万不能被我做的格式化工具给影响了
-    return "";
-  }
-  */
 }
 
 class CsFileType extends FileType {
@@ -459,7 +422,7 @@ class CsFileType extends FileType {
   `;
     let fieldMessages = this.fieldMessages;
     let fieldValueObjs = this.fieldValueObjs;
-    //console.log(fieldValueObjs);
+
     return ejs.render(str, { className: className, fieldMessages: fieldMessages, fieldValueObjs: fieldValueObjs, RegionComment: "// CUSTOM_REGION", customStr: customStr });
   }
 }
@@ -503,7 +466,7 @@ class LuaFileType extends FileType {
   `;
     let fieldMessages = this.fieldMessages;
     let fieldValueObjs = this.fieldValueObjs;
-    //console.log(fieldValueObjs);
+
     return ejs.render(str, { className: className, fieldMessages: fieldMessages, fieldValueObjs: fieldValueObjs, RegionComment: "// CUSTOM_REGION", customStr: customStr });
   }
 }
@@ -570,24 +533,17 @@ class JsonFileType extends FileType {
   `;
     let fieldMessages = this.fieldMessages;
     let fieldValueObjs = this.fieldValueObjs;
-    //console.log(fieldValueObjs);
+
     return ejs.render(str, { className: className, fieldMessages: fieldMessages, fieldValueObjs: fieldValueObjs, RegionComment: "// CUSTOM_REGION", customStr: customStr });
   }
 }
 
-
 function main() {
-
   try {
     watchExcelChange();
   } catch (error) {
-    
-    console.log("捕获到错误，估计是表格没有设置")
-    console.log(error);
+    console.log("捕获到错误，错误信息为："+error)
   }
- 
 }
-
-
 
 main();
