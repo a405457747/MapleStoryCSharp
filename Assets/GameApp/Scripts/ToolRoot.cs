@@ -6,8 +6,5 @@ namespace MapleStory
 {
     public static  partial class ToolRoot 
     {
-
-
     }
-
 }
