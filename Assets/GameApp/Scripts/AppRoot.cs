@@ -23,7 +23,7 @@ public class AppRoot : GameRootBase
     void Start()
     {
         Print<int>("AppRoot","Start!!!",new List<int>(){1,2,3,4},true);
-
+        Print("woaini", "bihao", "jiushi");
 
         
     }
