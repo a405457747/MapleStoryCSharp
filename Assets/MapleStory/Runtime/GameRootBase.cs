@@ -101,7 +101,7 @@ namespace MapleStory
             poolManager = this.gameObject.AddComponent<PoolManager>();
             gmManager = gameObject.AddComponent<GMManager>();
 
-            LogoShow();
+            //LogoShow();
         }
 
         void LogoShow()

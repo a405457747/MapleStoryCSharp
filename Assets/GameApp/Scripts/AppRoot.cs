@@ -11,19 +11,26 @@ public class AppRoot : GameRootBase
 
 
      
-     
+     public   GiftManager giftManager { get; private set; }
+
+     public ScoreJudge scoreJudge { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
 
         Instance = this;
+
+        OpenPanel<MainPanel>();
+
+        giftManager =gameObject.AddComponent<GiftManager>();
+        scoreJudge =gameObject.AddComponent<ScoreJudge>();
     }
 
     void Start()
     {
         Print<int>("AppRoot","Start!!!",new List<int>(){1,2,3,4},true);
-        Print("woaini", "bihao", "jiushi");
+
 
         
     }
