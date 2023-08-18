@@ -92,7 +92,7 @@ namespace MapleStory
 
             canvasTrans = GameObject.Find("Canvas").transform;
             
-            logoPanel = OpenPanel<LogoPanel>();
+            //logoPanel = OpenPanel<LogoPanel>();
             
             resManager = this.gameObject.AddComponent<ResManager>();
             saveManager = this.gameObject.AddComponent<SaveManager>();

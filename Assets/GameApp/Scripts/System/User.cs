@@ -9,7 +9,13 @@ public class User
   
   public Sprite HeadImage { get; set; }
 
+    public string appId {   get;set; }
 
-    public string appId {
-        get;set; }
+    public int Score { get; set; }
+
+    public User()
+    {
+        
+    }
+
 }

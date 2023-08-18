@@ -15,6 +15,8 @@ public class AppRoot : GameRootBase
 
      public ScoreJudge scoreJudge { get; private set; }
 
+     public FighterManager fighterManager { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +27,7 @@ public class AppRoot : GameRootBase
 
         giftManager =gameObject.AddComponent<GiftManager>();
         scoreJudge =gameObject.AddComponent<ScoreJudge>();
+        fighterManager =gameObject.AddComponent<FighterManager>(); 
     }
 
     void Start()
