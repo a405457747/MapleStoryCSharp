@@ -16,5 +16,10 @@ public class GiftManager : MonoBehaviour
         {
             print("f1 press");
         }
+
+        if (Input.GetKeyUp(KeyCode.F2))
+        {
+            print("f2 press");
+        }
     }
 }
