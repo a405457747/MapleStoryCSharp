@@ -1,0 +1,20 @@
+{
+  "Version": "v0.0.2",
+  "Type": 3,
+  "AccessRight": 0,
+  "DownloadUrl": null,
+  "InstallPath": "Assets/QFramework/Extensions/UniRxExtensions/",
+  "DocUrl": "https://liangxiegame.com",
+  "Readme": {
+    "version": "v0.0.2",
+    "content": "修复 错误",
+    "author": "liangxie",
+    "date": "2019 年 11 月 14 日 15:58",
+    "PackageId": "",
+    "VersionNumber": 2
+  },
+  "Id": null,
+  "Name": "UniRxExtensions",
+  "VersionNumber": 2,
+  "FileName": "UniRxExtensions_v0.0.2.unitypackage"
+}

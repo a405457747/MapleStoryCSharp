@@ -1,0 +1,20 @@
+{
+  "Version": "v0.0.1",
+  "Type": 3,
+  "AccessRight": 0,
+  "DownloadUrl": null,
+  "InstallPath": "Assets/QFramework/Extensions/ActionKitUniRxSupport/",
+  "DocUrl": "http://liangxiegame.com",
+  "Readme": {
+    "version": "v0.0.1",
+    "content": "upload UniRxAction",
+    "author": "liangxie",
+    "date": "2019 年 11 月 14 日 17:59",
+    "PackageId": "",
+    "VersionNumber": 1
+  },
+  "Id": null,
+  "Name": "ActionKitUniRxSupport",
+  "VersionNumber": 1,
+  "FileName": "ActionKitUniRxSupport_v0.0.1.unitypackage"
+}
