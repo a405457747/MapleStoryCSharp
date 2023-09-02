@@ -8,7 +8,7 @@
           
         
           
-            English = "333",
+            English = "333hell",
           
         
           
@@ -28,7 +28,7 @@
           
         
           
-            BB = 3,
+            BB = 555,
           
         
           
@@ -44,11 +44,15 @@
           
         
           
-            WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+            WW =new Dictionary<string, bool> { {"k232",true},{"b",false},{"c",true} },
           
         
           
             XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
+          
+        
+          
+            NNNK =new Dictionary<string, List<List<double>>> {  },
           
         
       
@@ -67,7 +71,7 @@
                 
               
                 
-                  English = "333",
+                  English = "333hell",
                 
               
                 
@@ -87,7 +91,7 @@
                 
               
                 
-                  BB = 3,
+                  BB = 555,
                 
               
                 
@@ -103,11 +107,15 @@
                 
               
                 
-                  WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+                  WW =new Dictionary<string, bool> { {"k232",true},{"b",false},{"c",true} },
                 
               
                 
                   XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
+                
+              
+                
+                  NNNK =new Dictionary<string, List<List<double>>> {  },
                 
               
             },
@@ -127,7 +135,7 @@
                 
               
                 
-                  Bike = 33,
+                  Bike = 66,
                 
               
                 
@@ -139,7 +147,7 @@
                 
               
                 
-                  BB = 0,
+                  BB = 555,
                 
               
                 
@@ -155,11 +163,15 @@
                 
               
                 
-                  WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+                  WW =new Dictionary<string, bool> { {"a332",true},{"b",false},{"c",true} },
                 
               
                 
                   XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
+                
+              
+                
+                  NNNK =new Dictionary<string, List<List<double>>> {  },
                 
               
             },
@@ -179,7 +191,7 @@
                 
               
                 
-                  Bike = 42,
+                  Bike = 66,
                 
               
                 
@@ -191,7 +203,7 @@
                 
               
                 
-                  BB = 3,
+                  BB = 555,
                 
               
                 
@@ -207,11 +219,15 @@
                 
               
                 
-                  WW =new Dictionary<string, bool> { {"a",true},{"b",false},{"c",true} },
+                  WW =new Dictionary<string, bool> { {"a3333",true},{"b",false},{"c",true} },
                 
               
                 
                   XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
+                
+              
+                
+                  NNNK =new Dictionary<string, List<List<double>>> {  },
                 
               
             },
@@ -264,6 +280,10 @@
               
                 
                   XX =new Dictionary<string, List<double>> { {"a",new List<double>{2d}},{"b",new List<double>{}},{"c",new List<double>{1d,2d,3d}} },
+                
+              
+                
+                  NNNK =new Dictionary<string, List<List<double>>> {  },
                 
               
             },

@@ -12,9 +12,12 @@ namespace MapleStory
         private AudioSource _musicAudioSource;
         private Dictionary<string, AudioSource> _soundAudioSources;
         private ResManager _resManager;
+        public static AudioManager Inst { get; private set; }
 
         public virtual void Awake()
         {
+            Inst = this;
+            
             _resManager = FindObjectOfType<ResManager>();
             _soundAudioSources = new Dictionary<string, AudioSource>();
 
