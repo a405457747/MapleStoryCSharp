@@ -11,7 +11,7 @@ namespace MapleStory2
 
         private void Awake()
         {
-            Inst = this;
+            if(Inst==null)   Inst = this;
             DontDestroyOnLoad(this.gameObject);
         }
 

@@ -8,11 +8,14 @@ namespace MapleStory2
 {
     public class SetPanel : MonoBehaviour
     {
+        internal static SetPanel Inst;
         private Slider musicSlider;
         private Slider effectSlider;
 
         private void Awake()
         {
+            if (Inst == null) Inst = this;
+            
             musicSlider = transform.Find("musicSlider").GetComponent<Slider>();
             effectSlider = transform.Find("effectSlider").GetComponent<Slider>();
         }

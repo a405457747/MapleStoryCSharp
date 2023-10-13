@@ -8,15 +8,15 @@ namespace MapleStory2
 {
     public class ConfigMgr : MonoBehaviour
     {
-
+        internal static ConfigMgr Inst;
         private void Awake()
         {
-
+            if (Inst == null) Inst = this;
         }
 
         private void Start()
         {
-            Sample();
+          //  Sample();
         }
 
         void Sample()

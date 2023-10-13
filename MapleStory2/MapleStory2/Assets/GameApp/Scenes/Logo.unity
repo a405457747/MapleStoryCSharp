@@ -501,11 +501,11 @@ GameObject:
   - component: {fileID: 321688835}
   - component: {fileID: 321688837}
   - component: {fileID: 321688839}
+  - component: {fileID: 321688842}
   - component: {fileID: 321688838}
   - component: {fileID: 321688836}
   - component: {fileID: 321688841}
   - component: {fileID: 321688840}
-  - component: {fileID: 321688842}
   m_Layer: 0
   m_Name: AppRoot
   m_TagString: Untagged

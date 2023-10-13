@@ -105,7 +105,7 @@ namespace MapleStory2
 
         void Awake()
         {
-            Inst = this;
+            if(Inst==null)  Inst = this;
 //            print("event awake");
         }
 

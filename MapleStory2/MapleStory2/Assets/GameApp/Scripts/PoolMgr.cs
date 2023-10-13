@@ -61,7 +61,7 @@ namespace MapleStory
 
         private void Awake()
         {
-            Inst = this;
+            if(Inst==null)     Inst = this;
         }
 
         private void Start()

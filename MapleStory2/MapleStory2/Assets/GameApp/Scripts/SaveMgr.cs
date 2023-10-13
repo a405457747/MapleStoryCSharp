@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using LitJson;
 
 namespace MapleStory2
 {
@@ -15,7 +16,7 @@ namespace MapleStory2
 
         private void Awake()
         {
-            Inst = this;
+            if (Inst == null) Inst = this;
 //            print("save awake");
         }
 
@@ -43,14 +44,14 @@ namespace MapleStory2
             }
             else
             {
-                return JsonUtility.FromJson<T>(tempStr);
+                return JsonMapper.ToObject<T>(tempStr);
             }
         }
 
         internal void SaveData<T>(T saveObj)
         {
             var tName = typeof(T).Name + ".txt";
-            var jsonStr = JsonUtility.ToJson(saveObj, false);
+            var jsonStr = JsonMapper.ToJson(saveObj); // JsonUtility.ToJson(saveObj, false);
 
             File.WriteAllText(System.IO.Path.Combine(Application.persistentDataPath, tName), jsonStr,
                 new UTF8Encoding(false));

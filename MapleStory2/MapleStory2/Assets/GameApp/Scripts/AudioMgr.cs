@@ -43,7 +43,7 @@ namespace MapleStory2
 
         private void Awake()
         {
-            Inst = this;
+           if(Inst==null) Inst = this;
             bgSource = GetComponent<AudioSource>();
             audioSet = GetComponent<SaveMgr>().LoadData<AudioSet>();
 //            print("audio awake");
