@@ -1543,6 +1543,7 @@ GameObject:
   - component: {fileID: 2101538561}
   - component: {fileID: 2101538560}
   - component: {fileID: 2101538563}
+  - component: {fileID: 2101538565}
   m_Layer: 5
   m_Name: closeButton
   m_TagString: Untagged
@@ -1664,6 +1665,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c80f7ed115e2b44affc87dfac5a91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2101538565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101538558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4c6edd7dcc56e40927323bcc38341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aniCost: 0.15
+  audioPath: Audio/Fire
 --- !u!1 &2105879870
 GameObject:
   m_ObjectHideFlags: 0
