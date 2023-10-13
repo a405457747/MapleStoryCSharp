@@ -9,5 +9,7 @@ namespace MapleStory2
     {
         public bool isRelease;
         public Dictionary<string, int> charDict;
+        public Vector2 v2;
+        public float nk;
     }
 }

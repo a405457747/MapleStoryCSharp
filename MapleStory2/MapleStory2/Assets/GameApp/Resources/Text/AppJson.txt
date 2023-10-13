@@ -1,4 +1,6 @@
 {
    "isRelease":true,
-     "charDict":{"a":1,"b":2,"c":3}
+     "charDict":{"a":1,"b":2,"c":3},
+     "v2":{"x":3,"y":4},
+     "nk":2.5
 }
