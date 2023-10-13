@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class AppJson
+
+namespace MapleStory2
 {
-   public bool isRelease;
-   public Dictionary<string, int> charDict;
+    public class AppJson
+    {
+        public bool isRelease;
+        public Dictionary<string, int> charDict;
+    }
 }
