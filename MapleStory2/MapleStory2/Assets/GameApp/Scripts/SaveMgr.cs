@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,15 +9,30 @@ namespace MapleStory2
 {
     public class SaveMgr : MonoBehaviour
     {
+        public List<string> savePathList;
 
-        internal T LoadData<T>() where T:new()
+        public static SaveMgr Inst;
+
+        private void Awake()
         {
-            var tName = nameof(T)+".txt";
+            Inst = this;
+//            print("save awake");
+        }
+
+        private void Start()
+        {
+        }
+
+        internal T LoadData<T>() where T : new()
+        {
+            var tName = typeof(T).Name + ".txt";
             var saveFile = Path.Combine(Application.persistentDataPath, tName);
+            savePathList.Add(saveFile);
+            //Debug.Log("saveFile path is "+saveFile);
 
             if (File.Exists(saveFile) == false)
             {
-                File.WriteAllText(saveFile,"",new UTF8Encoding(false));
+                File.WriteAllText(saveFile, "", new UTF8Encoding(false));
             }
 
             var tempStr = StrData<T>();
@@ -33,16 +49,16 @@ namespace MapleStory2
 
         internal void SaveData<T>(T saveObj)
         {
-            var tName =nameof(T)+".txt";
+            var tName = typeof(T).Name + ".txt";
             var jsonStr = JsonUtility.ToJson(saveObj, false);
-            
+
             File.WriteAllText(System.IO.Path.Combine(Application.persistentDataPath, tName), jsonStr,
                 new UTF8Encoding(false));
         }
-        
-         string StrData<T>()
+
+        string StrData<T>()
         {
-            var tName =nameof(T)+".txt";
+            var tName = typeof(T).Name + ".txt";
             return File.ReadAllText(System.IO.Path.Combine(Application.persistentDataPath, tName),
                 new UTF8Encoding(false));
         }

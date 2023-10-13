@@ -106,6 +106,12 @@ namespace MapleStory2
         void Awake()
         {
             Inst = this;
+//            print("event awake");
+        }
+
+        private void Start()
+        {
+            
         }
 
         internal void Sample()
