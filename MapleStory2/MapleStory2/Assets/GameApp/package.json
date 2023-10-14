@@ -1,0 +1,10 @@
+{
+    "name": "com.fuyoumao.maplestory",
+    "displayName": "MapleStory2 GameFramework",
+    "version": "1.0.0",
+    "unity": "2020.3.40f1c1",
+    "keywords": ["GameFramework"],
+    "description": "MapleStory2 GameFramework description",
+    "dependencies": {
+    }
+}
