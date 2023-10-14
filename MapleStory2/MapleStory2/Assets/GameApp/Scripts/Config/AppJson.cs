@@ -14,7 +14,7 @@ namespace MapleStory2
         {
             {"a",1},
             {"b",2},
-            {"c",3},
+             {"c",3},
         };
         public Vector2 v2;
         public float nk;
