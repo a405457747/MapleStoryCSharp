@@ -16,7 +16,7 @@ namespace MapleStory2
 
         private void Start()
         {
-            Sample();
+           // Sample();
         }
 
         void Sample()

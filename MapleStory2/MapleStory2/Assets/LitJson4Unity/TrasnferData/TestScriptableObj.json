@@ -2,6 +2,10 @@
 {
     "name" : "TestScriptableObj",
     "hideFlags" : 0,
+    "charDict"  : {
+        "a" : 1
+    },
+    "isDD"      : false,
     "num1"      : 100,
     "num2"      : 100.1,
     "v2"        : {

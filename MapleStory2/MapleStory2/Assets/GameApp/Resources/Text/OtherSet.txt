@@ -1,0 +1,7 @@
+
+{
+    "name" : "OtherSet",
+    "hideFlags" : 0,
+    "aa"        : false,
+    "bb"        : false
+}

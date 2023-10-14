@@ -6,6 +6,14 @@ using LitJson.Extensions;
 [CreateAssetMenu(fileName = "TestScriptableObj",menuName = "ColaFramework/TestScriptableObj")]
 public class TestScriptableObj:ScriptableObject
 {
+    
+    public Dictionary<string, int> charDict=new Dictionary<string, int>()
+    {
+        {"a",1}
+    };
+    
+    public bool isDD=true;
+    
     public int num1;
 
     public float num2;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eb5f803c25dba4fbb86451cbb42d25, type: 3}
   m_Name: TestScriptableObj
   m_EditorClassIdentifier: 
+  isDD: 0
   num1: 100
   num2: 100.1
   v2: {x: 3.4, y: 5.6}
