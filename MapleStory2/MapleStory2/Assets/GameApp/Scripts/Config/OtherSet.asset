@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb9b6ef4fc2e2246aac7588626730d5, type: 3}
   m_Name: OtherSet
   m_EditorClassIdentifier: 
-  aa: 0
-  bb: 0
+  aa: 1
+  bb: 1

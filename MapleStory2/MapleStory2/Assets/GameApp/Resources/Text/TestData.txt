@@ -1,0 +1,12 @@
+
+{
+    "name" : "TestData",
+    "hideFlags" : 0,
+    "aa"        : true,
+    "bb"        : true,
+    "kkkl"      : {
+        "x" : 0.0,
+        "y" : 0.0,
+        "z" : 0.0
+    }
+}
